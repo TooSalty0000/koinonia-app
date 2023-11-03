@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "476613426669",
+    "firebase_url": "https://koinonia-1338b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "koinonia-1338b",
+    "storage_bucket": "koinonia-1338b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476613426669:android:e87150e6363cf091cdfbe4",
+        "android_client_info": {
+          "package_name": "com.example.koinonia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476613426669-kv534lv9de78vbh624746ipm5g6nqoa2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuw0rJVwC2UwO4ERqoImPaiARh4GIcNZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476613426669-kv534lv9de78vbh624746ipm5g6nqoa2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

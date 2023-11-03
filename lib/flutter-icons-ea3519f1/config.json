@@ -1,0 +1,28 @@
+{
+  "name": "",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "97bdc2e992e956486bf95bff5fe2ccc0",
+      "css": "praying_hands",
+      "code": 63108,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "3e9baa72bd0b9eed27a5eb1c51646ca0",
+      "css": "pray",
+      "code": 63107,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "9b61f67d4c4302dbaff4040fc43c7b34",
+      "css": "spray_can",
+      "code": 62909,
+      "src": "fontawesome5"
+    }
+  ]
+}
