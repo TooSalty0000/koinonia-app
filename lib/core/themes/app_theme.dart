@@ -43,11 +43,16 @@ ThemeData getTheme() {
         fontWeight: FontWeight.bold,
       ),
       // ···
-      titleLarge: GoogleFonts.oswald(
-        fontSize: 30,
-        fontStyle: FontStyle.italic,
+      titleLarge: GoogleFonts.orbitron(
+        fontSize: 67.8,
       ),
-      bodyMedium: GoogleFonts.merriweather(),
+      titleMedium: GoogleFonts.orbitron(
+        fontSize: 41.9,
+      ),
+      titleSmall: GoogleFonts.orbitron(
+        fontSize: 25.9,
+      ),
+      bodyMedium: GoogleFonts.istokWeb(),
       displaySmall: GoogleFonts.pacifico(),
     ),
   );
