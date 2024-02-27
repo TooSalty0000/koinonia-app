@@ -35,24 +35,63 @@ class LoginRepositoryImpl implements LoginRepository {
       throw 'No ID Token found.';
     }
 
-    return Supabase.instance.client.auth.signInWithIdToken(
+    final response = await Supabase.instance.client.auth.signInWithIdToken(
       provider: OAuthProvider.google,
       idToken: idToken,
       accessToken: accessToken,
     );
+
+    // Check if sign-in was successful and user is not null
+    if (response.user != null) {
+      // Call the function to create a user in the database
+      await ensureUserRowExists(response.user!.id);
+    }
+
+    return response;
   }
 
   @override
   Future<AuthResponse> signInWithEmailPassword(
       String _email, String _password) async {
-    return await Supabase.instance.client.auth
+    final response = await Supabase.instance.client.auth
         .signInWithPassword(email: _email, password: _password);
+
+    if (response.user != null) {
+      // Call the function to create a user in the database
+      await ensureUserRowExists(response.user!.id);
+    }
+
+    return response;
   }
 
   @override
   Future<AuthResponse> signUpWithEmailPassword(
       String _email, String _password) async {
-    return await Supabase.instance.client.auth
+    final response = await Supabase.instance.client.auth
         .signUp(email: _email, password: _password);
+
+    if (response.user != null) {
+      // Call the function to create a user in the database
+      await ensureUserRowExists(response.user!.id);
+    }
+
+    return response; // Return the original AuthResponse
+  }
+
+  Future<void> ensureUserRowExists(String userId) async {
+    final userExistsResponse = await Supabase.instance.client
+        .from('users')
+        .select()
+        .eq('user', userId);
+
+    // Check if the user row already exists
+    if (userExistsResponse.isEmpty) {
+      // If there's an error, or if user doesn't exist, try to insert the user
+      await createUserInDatabase(userId);
+    }
+  }
+
+  Future<void> createUserInDatabase(String userId) async {
+    await Supabase.instance.client.from('users').insert({'user': userId});
   }
 }

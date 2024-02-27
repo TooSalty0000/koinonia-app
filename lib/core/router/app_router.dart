@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:koinonia/features/login-feature/presentation/login/Loginpage.dart';
 import 'package:koinonia/features/login-feature/presentation/register/RegisterPage.dart';
 import 'package:koinonia/main.dart';
-import 'package:koinonia/pages/Indexpage.dart';
+import 'package:koinonia/features/home-feature/presentation/Indexpage.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {

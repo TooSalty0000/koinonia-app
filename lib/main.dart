@@ -1,4 +1,5 @@
 // Grouped and sorted imports
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:koinonia/core/themes/app_theme.dart';
@@ -36,6 +37,8 @@ class MyApp extends StatelessWidget {
 }
 
 class Starter extends StatefulWidget {
+  const Starter({super.key});
+
   @override
   _StarterState createState() => _StarterState();
 }
@@ -47,14 +50,26 @@ class _StarterState extends State<Starter> {
     _setupAuthListener();
   }
 
-  Future<void> _setupAuthListener() async {
+  void _setupAuthListener() {
     final client = Supabase.instance.client;
 
     // Listening to the auth state changes
     client.auth.onAuthStateChange.listen((data) async {
       final event = data.event;
+      if (event == AuthChangeEvent.initialSession) {
+        if (client.auth.currentSession != null) {
+          // ignore: use_build_context_synchronously
+          Navigator.pushReplacementNamed(context, '/index');
+        } else {
+          // ignore: use_build_context_synchronously
+          Navigator.pushReplacementNamed(context, '/login-starter',
+              arguments: 'fromStarter');
+        }
+      }
       if (event == AuthChangeEvent.signedOut) {
-        print('User signed out.');
+        if (kDebugMode) {
+          print('User signed out.');
+        }
         // Check if the widget is still mounted before navigating
         if (mounted) {
           Navigator.pushReplacementNamed(context, '/login-loggedOut',
@@ -63,18 +78,7 @@ class _StarterState extends State<Starter> {
       }
     });
 
-    // // Introduce a 1-second delay
-    // await Future.delayed(const Duration(seconds: 1));
-
-    // Make sure to check if the widget is still mounted before navigating
-    if (!mounted) return;
-
-    if (client.auth.currentSession != null) {
-      Navigator.pushReplacementNamed(context, '/index');
-    } else {
-      Navigator.pushReplacementNamed(context, '/login-starter',
-          arguments: 'fromStarter');
-    }
+    // wait 1 second to check for the initial session
   }
 
   @override

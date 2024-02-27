@@ -4,6 +4,9 @@ import 'package:koinonia/features/login-feature/domain/repositories/LoginReposit
 import 'package:koinonia/features/login-feature/domain/usecases/AuthUseCase.dart';
 import 'package:koinonia/features/login-feature/domain/usecases/AuthUseCaseImpl.dart';
 import 'package:koinonia/features/login-feature/presentation/common/view/AuthViewModel.dart';
+import 'package:koinonia/features/profile-feature/domain/repository/UserRepository.dart';
+import 'package:koinonia/features/profile-feature/domain/repository/UserRepositoryImpl.dart';
+import 'package:koinonia/features/profile-feature/presentation/View/UserViewModel.dart';
 
 final sl = GetIt.instance;
 
@@ -13,6 +16,10 @@ initializeDependencies() async {
         signInWithGoogleUseCase: sl(),
         signInWithPasswordUseCase: sl(),
         signUpWithPasswordUseCase: sl(),
+      ));
+
+  sl.registerFactory<UserBloc>(() => UserBloc(
+        userRepository: sl(),
       ));
 
   // Use cases
@@ -25,4 +32,5 @@ initializeDependencies() async {
 
   // Repository
   sl.registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl());
+  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl());
 }

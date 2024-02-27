@@ -8,21 +8,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        QuickAccess(),
-        Text(
-          "Group Chats",
-          style: TextStyle(
-            fontSize: 39.3,
-            fontWeight: FontWeight.w100,
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          QuickAccess(),
+          Text(
+            "Group Chats",
+            style: TextStyle(
+              fontSize: 39.3,
+              fontWeight: FontWeight.w100,
+            ),
+            textAlign: TextAlign.start,
           ),
-          textAlign: TextAlign.start,
-        ),
-        GroupChatList()
-      ],
+          GroupChatList()
+        ],
+      ),
     );
   }
 }
