@@ -4,6 +4,7 @@ import 'package:koinonia/features/profile-feature/data/userEntity.dart';
 import 'package:koinonia/features/profile-feature/domain/repository/UserRepository.dart';
 
 import 'package:equatable/equatable.dart';
+import 'package:koinonia/features/profile-feature/domain/usecases/UserUseCase.dart';
 
 abstract class UserEvent extends Equatable {
   const UserEvent();
@@ -28,16 +29,16 @@ class UserLoaded extends UserState {
 }
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  final UserRepository userRepository;
+  final GetCurrentUserUseCase getCurrentUserUseCase;
 
-  UserBloc({required this.userRepository}) : super(UserInitial()) {
+  UserBloc({required this.getCurrentUserUseCase}) : super(UserInitial()) {
     on<LoadUser>(_onLoadUser);
   }
 
   Future<void> _onLoadUser(LoadUser event, Emitter<UserState> emit) async {
     try {
-      final user = await userRepository.getCurrentUser();
-      emit(UserLoaded(user: user));
+      final user = await getCurrentUserUseCase.call();
+      emit(UserLoaded(user: user!));
     } catch (e) {
       // Handle errors, possibly by emitting a UserError state
       if (kDebugMode) {
