@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:koinonia/features/profile-feature/data/userEntity.dart';
-import 'package:koinonia/features/profile-feature/domain/repository/UserRepository.dart';
 
 import 'package:equatable/equatable.dart';
 import 'package:koinonia/features/profile-feature/domain/usecases/UserUseCase.dart';
