@@ -1,4 +1,4 @@
-import 'package:koinonia/features/profile-feature/data/userEntity.dart';
+import 'package:koinonia/features/profile-feature/domain/entity/UserEntity.dart';
 
 abstract class GetCurrentUserUseCase {
   Future<UserEntity?> call();

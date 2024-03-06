@@ -1,4 +1,4 @@
-import 'package:koinonia/features/profile-feature/data/userEntity.dart';
+import 'package:koinonia/features/profile-feature/domain/entity/UserEntity.dart';
 import 'package:koinonia/features/profile-feature/domain/repository/UserRepository.dart';
 import 'package:koinonia/features/profile-feature/domain/usecases/UserUseCase.dart';
 

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:koinonia/features/profile-feature/data/userEntity.dart';
+import 'package:koinonia/features/profile-feature/domain/entity/UserEntity.dart';
 import 'package:koinonia/features/profile-feature/presentation/View/UserViewModel.dart';
 import 'package:koinonia/injection_container.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

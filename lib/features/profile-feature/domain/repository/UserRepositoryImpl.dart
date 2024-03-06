@@ -1,4 +1,4 @@
-import 'package:koinonia/features/profile-feature/data/userEntity.dart';
+import 'package:koinonia/features/profile-feature/domain/entity/UserEntity.dart';
 import 'package:koinonia/features/profile-feature/domain/repository/UserRepository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -17,7 +17,7 @@ class UserRepositoryImpl implements UserRepository {
         .single(); // Assuming there's only one row per user
 
     if (response.isEmpty) {
-      throw Exception('Failed to fetch user data: ${response["statusText"]}');
+      throw ('Failed to fetch user data: ${response["statusText"]}');
     }
 
     // Assuming `data` contains the response data
